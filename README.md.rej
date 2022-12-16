@@ -1,0 +1,27 @@
+diff a/README.md b/README.md	(rejected hunks)
+@@ -55,15 +55,24 @@ from prefect_databricks.tasks import (
+     hello_prefect_databricks,
+ )
+ 
++# Use `with_options` to customize options on any existing task or flow:
++
++custom_goodbye_prefect_databricks = goodbye_prefect_databricks.with_options(
++    name="My custom task name",
++    retries=2,
++    retry_delay_seconds=10,
++)
+ 
+ @flow
+ def example_flow():
+     hello_prefect_databricks
+-    goodbye_prefect_databricks
++    custom_goodbye_prefect_databricks
+ 
+ example_flow()
+ ```
+ 
++For more tips on how to use tasks and flows in a Collection, check out [Using Collections](https://orion-docs.prefect.io/collections/usage/)!
++
+ ## Resources
+ 
+ If you encounter any bugs while using `prefect-databricks`, feel free to open an issue in the [prefect-databricks](https://github.com/PrefectHQ/prefect-databricks) repository.
